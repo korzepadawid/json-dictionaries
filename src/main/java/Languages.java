@@ -30,14 +30,32 @@ public class Languages {
       scanner.nextLine();
 
       if (option == 1) {
-        System.out.println(1);
+        System.out.print("How many words?: ");
+        int wordsCount = scanner.nextInt();
+        scanner.nextLine();
+
+        for (int i = 0; i < wordsCount; i++) {
+          System.out.printf("Word nr %d. : ", i + 1);
+          String word = scanner.next();
+          scanner.nextLine();
+
+          List<String> result = dictionaryService.findAllOccurrences(word);
+          occurrences.put(word, result);
+
+          if (result.size() != 0) {
+            System.out.println(result);
+          } else {
+            System.out.println("Word doesn't exist.");
+          }
+        }
+
       } else if (option == 2) {
         System.out.println(2);
       } else {
         throw new RuntimeException();
       }
     } catch (Exception exception) {
-      log.error("Invalid option.");
+      log.error("Invalid input.");
     }
 
   }
