@@ -53,4 +53,11 @@ public class Dictionary {
   public int hashCode() {
     return Objects.hash(language);
   }
+
+  @Override
+  public String toString() {
+    return "Dictionary{" +
+        "language='" + language + '\'' +
+        '}';
+  }
 }
