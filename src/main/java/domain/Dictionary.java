@@ -13,8 +13,12 @@ public class Dictionary {
   }
 
   public Dictionary(String language) {
+    this(language, new ArrayList<>());
+  }
+
+  public Dictionary(String language, List<String> words) {
     this.language = language;
-    this.words = new ArrayList<>();
+    this.words = words;
   }
 
   public void addWord(String word) {

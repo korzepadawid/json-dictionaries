@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 public class DictionaryJsonService {
 
-  public static final String DIR_PATH = "src/main/resources/dictionaries";
+  private static final String DIR_PATH = "src/main/resources/dictionaries";
 
   private final ObjectMapper objectMapper = new ObjectMapper();
   private final Logger log = LoggerFactory.getLogger(DictionaryJsonService.class);
@@ -28,7 +28,6 @@ public class DictionaryJsonService {
         .filter(Objects::nonNull)
         .collect(Collectors.toMap(Dictionary::getLanguage, dictionary -> dictionary));
   }
-
   public void saveDictionary(Dictionary dictionary) {
     File file = new File(
         DIR_PATH + "/" + dictionary.getLanguage().toLowerCase(Locale.ROOT) + ".json");
