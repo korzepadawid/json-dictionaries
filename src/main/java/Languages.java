@@ -1,3 +1,4 @@
+import domain.Dictionary;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,7 +51,26 @@ public class Languages {
         }
 
       } else if (option == 2) {
-        System.out.println(2);
+        System.out.print("Language name: ");
+        String languageName = scanner.next();
+        scanner.nextLine();
+
+        System.out.print("How many words?: ");
+        int wordsCount = scanner.nextInt();
+        scanner.nextLine();
+
+        final Dictionary dictionary = new Dictionary(languageName);
+
+        for (int i = 0; i < wordsCount; i++) {
+          System.out.printf("Word nr %d. : ", i + 1);
+          String word = scanner.next();
+          scanner.nextLine();
+
+          dictionary.addWord(word);
+        }
+
+        dictionaryJsonService.saveDictionary(dictionary);
+
       } else {
         throw new RuntimeException();
       }
