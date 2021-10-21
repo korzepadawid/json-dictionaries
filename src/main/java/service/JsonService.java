@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DictionaryJsonService {
+public class JsonService {
 
   private static final String DIR_PATH = "src/main/resources/dictionaries";
 
   private final ObjectMapper objectMapper = new ObjectMapper();
-  private final Logger log = LoggerFactory.getLogger(DictionaryJsonService.class);
+  private final Logger log = LoggerFactory.getLogger(JsonService.class);
 
   public Map<String, Dictionary> getAllDictionaries() throws IOException {
     return Files.find(Paths.get(DIR_PATH), 1,

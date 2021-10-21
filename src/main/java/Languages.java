@@ -1,3 +1,4 @@
+import com.lowagie.text.DocumentException;
 import domain.Dictionary;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,16 +8,17 @@ import java.util.Map;
 import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import service.DictionaryJsonService;
+import service.JsonService;
+import service.PdfService;
 import service.DictionaryService;
 
 public class Languages {
 
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args) throws IOException, DocumentException {
     final Logger log = LoggerFactory.getLogger(Languages.class);
-    final DictionaryJsonService dictionaryJsonService = new DictionaryJsonService();
+    final JsonService jsonService = new JsonService();
     final DictionaryService dictionaryService = new DictionaryService(
-        new ArrayList<>(dictionaryJsonService.getAllDictionaries().values()));
+        new ArrayList<>(jsonService.getAllDictionaries().values()));
     final Map<String, List<String>> occurrences = new HashMap<>();
 
     System.out.println("Options");
@@ -69,7 +71,7 @@ public class Languages {
           dictionary.addWord(word);
         }
 
-        dictionaryJsonService.saveDictionary(dictionary);
+        jsonService.saveDictionary(dictionary);
 
       } else {
         throw new RuntimeException();
@@ -78,5 +80,11 @@ public class Languages {
       log.error("Invalid input.");
     }
 
+    if (occurrences.size() != 0) {
+      PdfService pdfService = new PdfService();
+      String template = pdfService.parseThymeleafTemplate(occurrences);
+      pdfService.generatePdfFromHtml(template);
+      log.info("Saving stats to stats.pdf");
+    }
   }
 }

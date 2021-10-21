@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+<h1>Summary</h1>
+<h2 th:text="'Total: ' + ${count}"></h2>
+<h3>Results</h3>
+<ul th:each="word :${results}">
+  <span th:text="${word.key}">
+  </span>
+  <span th:switch="${word.value.empty}">
+    <span th:case="true"> - no results</span>
+    <span th:case="false"> - </span>
+  </span>
+  <span th:each="occcurrence : ${word.value}">
+    <span th:text="${occcurrence}"></span>
+  </span>
+  <br/>
+</ul>
+</body>
+</html>
