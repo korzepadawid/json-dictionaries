@@ -12,7 +12,7 @@ public class DictionaryService {
     this.dictionaries = dictionaries;
   }
 
-  public List<String> findAllOccurrences(String keyword) {
+  public List<String> findAllOccurrences(final String keyword) {
     return dictionaries.stream()
         .filter(dictionary -> dictionary.getWords().stream()
             .map(String::toLowerCase).collect(Collectors.toList())

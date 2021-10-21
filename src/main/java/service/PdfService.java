@@ -29,7 +29,7 @@ public class PdfService {
     return templateEngine.process("templates/stats", context);
   }
 
-  public void generatePdfFromHtml(String html) throws IOException, DocumentException {
+  public void generatePdfFromHtml(final String html) throws IOException, DocumentException {
     OutputStream outputStream = new FileOutputStream("./summary.pdf");
 
     ITextRenderer renderer = new ITextRenderer();

@@ -3,7 +3,6 @@ package service;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import domain.Dictionary;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +13,7 @@ class DictionaryServiceTest {
   private DictionaryService dictionaryService;
 
   @Test
-  void shouldReturnEmptyListWhenNoDictionaries() throws IOException {
+  void shouldReturnEmptyListWhenNoDictionaries() {
     dictionaryService = new DictionaryService(Collections.emptyList());
 
     var occurrences = dictionaryService.findAllOccurrences("kw");
@@ -24,7 +23,7 @@ class DictionaryServiceTest {
   }
 
   @Test
-  void shouldReturnEmptyListWhenNoMatches() throws IOException {
+  void shouldReturnEmptyListWhenNoMatches() {
     dictionaryService = new DictionaryService(getListOfDictionaries());
 
     var occurrences = dictionaryService.findAllOccurrences("kw");
@@ -34,7 +33,7 @@ class DictionaryServiceTest {
   }
 
   @Test
-  void shouldReturnValidOccurrencesWhenMoreThanOneLanguage() throws IOException {
+  void shouldReturnValidOccurrencesWhenMoreThanOneLanguage() {
     dictionaryService = new DictionaryService(getListOfDictionaries());
 
     var occurrences = dictionaryService.findAllOccurrences("ok");
@@ -45,7 +44,7 @@ class DictionaryServiceTest {
   }
 
   @Test
-  void shouldReturnValidOccurrenceWhenOnlyOneLanguage() throws IOException {
+  void shouldReturnValidOccurrenceWhenOnlyOneLanguage() {
     dictionaryService = new DictionaryService(getListOfDictionaries());
 
     var occurrences = dictionaryService.findAllOccurrences("no");
@@ -56,7 +55,7 @@ class DictionaryServiceTest {
   }
 
   @Test
-  void shouldReturnValidOccurrenceWhenIgnoringCase() throws IOException {
+  void shouldReturnValidOccurrenceWhenIgnoringCase() {
     List<Dictionary> dictionaries = List.of(
         new Dictionary("English", Arrays.asList("test", "ok", "no")),
         new Dictionary("Polish", Arrays.asList("test", "Ok", "oK"))

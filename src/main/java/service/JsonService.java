@@ -28,7 +28,7 @@ public class JsonService {
         .filter(Objects::nonNull)
         .collect(Collectors.toMap(Dictionary::getLanguage, dictionary -> dictionary));
   }
-  public void saveDictionary(Dictionary dictionary) {
+  public void saveDictionary(final Dictionary dictionary) {
     File file = new File(
         DIR_PATH + "/" + dictionary.getLanguage().toLowerCase(Locale.ROOT) + ".json");
     try {
@@ -38,7 +38,7 @@ public class JsonService {
     }
   }
 
-  public Dictionary read(Path path) {
+  public Dictionary read(final Path path) {
     try {
       return objectMapper.readValue(new File(path.toString()), Dictionary.class);
     } catch (IOException e) {
