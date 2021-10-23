@@ -1,4 +1,24 @@
-# Polecenie
+# Projekt nr. I
+
+## Uruchomienie
+
+```shell
+$ git clone https://github.com/korzepadawid/json-dictionaries.git 
+```
+
+```shell
+$ cd json-dictionaries 
+```
+
+```shell
+$ mvn clean package
+```
+
+```shell
+$ java -jar target/*.jar
+```
+
+## Polecenie
 
 Napisz program, który wczyta z plików json (lub xml) listę słów danego języka. Następnie dla każdego
 wpisanego przez użytkownika słowa wypisze z jakiego języka ono pochodzi (uwaga! to samo słowo może
