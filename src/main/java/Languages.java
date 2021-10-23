@@ -8,9 +8,9 @@ import java.util.Map;
 import java.util.Scanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import service.DictionaryService;
 import service.JsonService;
 import service.PdfService;
-import service.DictionaryService;
 
 public class Languages {
 
@@ -84,7 +84,7 @@ public class Languages {
       PdfService pdfService = new PdfService();
       String template = pdfService.parseThymeleafTemplate(occurrences);
       pdfService.generatePdfFromHtml(template);
-      log.info("Saving stats to stats.pdf");
+      log.info("Saving stats to summary.pdf");
     }
   }
 }

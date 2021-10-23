@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 public class JsonService {
 
-  private static final String DIR_PATH = "src/main/resources/dictionaries";
+  private static final String DIR_PATH = "./dictionaries";
 
   private final ObjectMapper objectMapper = new ObjectMapper();
   private final Logger log = LoggerFactory.getLogger(JsonService.class);
