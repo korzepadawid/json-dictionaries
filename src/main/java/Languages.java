@@ -54,8 +54,7 @@ public class Languages {
 
       } else if (option == 2) {
         System.out.print("Language name: ");
-        String languageName = scanner.next();
-        scanner.nextLine();
+        String languageName = scanner.nextLine();
 
         System.out.print("How many words?: ");
         int wordsCount = scanner.nextInt();

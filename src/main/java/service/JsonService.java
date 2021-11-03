@@ -32,10 +32,11 @@ public class JsonService {
   }
 
   public void saveDictionary(final Dictionary dictionary) {
-    File file =
-        new File(DIR_PATH + "/" + dictionary.getLanguage().toLowerCase(Locale.ROOT) + ".json");
+    String filename = getKebabCase(dictionary.getLanguage());
+    File file = new File(DIR_PATH + "/" + filename + ".json");
     try {
       objectMapper.writeValue(file, dictionary);
+      log.info("New dictionary in {}.json", filename);
     } catch (IOException e) {
       log.error("Can't save to json file.");
     }
@@ -48,5 +49,9 @@ public class JsonService {
       log.error("Can't read json file.");
     }
     return null;
+  }
+
+  private String getKebabCase(final String text) {
+    return text.toLowerCase(Locale.ROOT).replaceAll(" ", "-");
   }
 }
