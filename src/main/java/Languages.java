@@ -17,8 +17,8 @@ public class Languages {
   public static void main(String[] args) throws IOException, DocumentException {
     final Logger log = LoggerFactory.getLogger(Languages.class);
     final JsonService jsonService = new JsonService();
-    final DictionaryService dictionaryService = new DictionaryService(
-        new ArrayList<>(jsonService.getAllDictionaries().values()));
+    final DictionaryService dictionaryService =
+        new DictionaryService(new ArrayList<>(jsonService.getAllDictionaries().values()));
     final Map<String, List<String>> occurrences = new HashMap<>();
 
     System.out.println("Options");

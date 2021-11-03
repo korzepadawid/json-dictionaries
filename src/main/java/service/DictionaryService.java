@@ -14,9 +14,12 @@ public class DictionaryService {
 
   public List<String> findAllOccurrences(final String keyword) {
     return dictionaries.stream()
-        .filter(dictionary -> dictionary.getWords().stream()
-            .map(String::toLowerCase).collect(Collectors.toList())
-            .contains(keyword.toLowerCase()))
+        .filter(
+            dictionary ->
+                dictionary.getWords().stream()
+                    .map(String::toLowerCase)
+                    .collect(Collectors.toList())
+                    .contains(keyword.toLowerCase()))
         .map(Dictionary::getLanguage)
         .collect(Collectors.toList());
   }

@@ -9,8 +9,7 @@ public class Dictionary {
   private String language;
   private List<String> words;
 
-  public Dictionary() {
-  }
+  public Dictionary() {}
 
   public Dictionary(String language) {
     this(language, new ArrayList<>());
@@ -60,8 +59,6 @@ public class Dictionary {
 
   @Override
   public String toString() {
-    return "Dictionary{" +
-        "language='" + language + '\'' +
-        '}';
+    return "Dictionary{" + "language='" + language + '\'' + '}';
   }
 }

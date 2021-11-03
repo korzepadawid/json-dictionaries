@@ -51,15 +51,14 @@ class DictionaryServiceTest {
 
     assertThat(occurrences.contains("English")).isTrue();
     assertThat(occurrences.size()).isEqualTo(1);
-
   }
 
   @Test
   void shouldReturnValidOccurrenceWhenIgnoringCase() {
-    List<Dictionary> dictionaries = List.of(
-        new Dictionary("English", Arrays.asList("test", "ok", "no")),
-        new Dictionary("Polish", Arrays.asList("test", "Ok", "oK"))
-    );
+    List<Dictionary> dictionaries =
+        List.of(
+            new Dictionary("English", Arrays.asList("test", "ok", "no")),
+            new Dictionary("Polish", Arrays.asList("test", "Ok", "oK")));
     dictionaryService = new DictionaryService(dictionaries);
 
     var occurrences = dictionaryService.findAllOccurrences("oK");
@@ -71,7 +70,6 @@ class DictionaryServiceTest {
   List<Dictionary> getListOfDictionaries() {
     return List.of(
         new Dictionary("English", Arrays.asList("test", "ok", "no")),
-        new Dictionary("Polish", Arrays.asList("test", "ok", "ok"))
-    );
+        new Dictionary("Polish", Arrays.asList("test", "ok", "ok")));
   }
 }

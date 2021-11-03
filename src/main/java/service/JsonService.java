@@ -22,15 +22,18 @@ public class JsonService {
   private final Logger log = LoggerFactory.getLogger(JsonService.class);
 
   public Map<String, Dictionary> getAllDictionaries() throws IOException {
-    return Files.find(Paths.get(DIR_PATH), 1,
+    return Files.find(
+            Paths.get(DIR_PATH),
+            1,
             (path, basicFileAttributes) -> path.getFileName().toString().endsWith(".json"))
         .map(this::read)
         .filter(Objects::nonNull)
         .collect(Collectors.toMap(Dictionary::getLanguage, dictionary -> dictionary));
   }
+
   public void saveDictionary(final Dictionary dictionary) {
-    File file = new File(
-        DIR_PATH + "/" + dictionary.getLanguage().toLowerCase(Locale.ROOT) + ".json");
+    File file =
+        new File(DIR_PATH + "/" + dictionary.getLanguage().toLowerCase(Locale.ROOT) + ".json");
     try {
       objectMapper.writeValue(file, dictionary);
     } catch (IOException e) {
